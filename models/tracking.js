@@ -23,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
       },
       cost: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.FLOAT,
         allowNull:false
       }
     })
