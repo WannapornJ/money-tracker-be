@@ -6,6 +6,7 @@ const app = express();
 const db = require("./models");
 const cors = require("cors");
 const userRouter = require('./routes/user');
+const categoryRouter = require('./routes/category');
 
 let allowedOrigins = ['http://localhost:3000'];
 
@@ -28,6 +29,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.use('/user', userRouter);
+app.use('/category', categoryRouter);
 
 db.sequelize.sync({ force: false }).then(() => {
   server = app.listen(process.env.PORT || 8001, () => {
