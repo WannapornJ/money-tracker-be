@@ -3,7 +3,7 @@ const { Op } = require("sequelize");
 
 const getUserCategory = async (req, res) => {
   const userId = req.user.id;
-  const userCategories = await db.User_Category.findAll({
+  const userCategories = await db.Category.findAll({
     where: { user_id: userId },
     attributes: { exclude: ["createdAt", "updatedAt"] },
   });
