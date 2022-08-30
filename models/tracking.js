@@ -5,9 +5,9 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false
       },
       date: {
-        type: DataTypes.DATE,
+        type: DataTypes.STRING,
         allowNull: false,
-        defaultValue: new Date()
+        defaultValue: new Date().toString()
       },
       year: {
         type: DataTypes.INTEGER,
@@ -23,7 +23,8 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
       },
       cost: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.FLOAT,
+        allowNull:false
       }
     })
   
