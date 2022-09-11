@@ -47,20 +47,15 @@ const login = async (req, res) => {
   if (isPWCorrect) {
     const payload = {
       id: user.id,
-      name: user.name,
-      status: user.status,
-      isCustomer: user.isCustomer,
+      username: user.username,
     };
     const token = jwt.sign(payload, process.env.SECRET, {
-      expiresIn: `${process.env.TIMEOUT}d`,
-    });
-    await user.update({
-      isCustomer: "TRUE",
+      expiresIn: "1h",
     });
     res.status(200).send({
       message: "successfully login",
       access_token: token,
-    });
+    })
   } else {
     res.status(400).send({ message: "Username or Password is wrong" });
   }
