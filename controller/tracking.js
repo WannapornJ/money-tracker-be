@@ -51,7 +51,6 @@ const getAllTrackingByDate = async (req, res) => {
       },
     });
     res.status(200).send({ targetTracking, total, expense, income });
-    res.status(200).send({ expType });
   } catch (err) {
     console.log("err :>> ", err);
   }
@@ -76,7 +75,7 @@ const getAllTrackingByWeek = async (req, res) => {
           model: db.Tracking,
           where: {
             date: {
-              [Op.in]: weekD,
+              [Op.in]: weekD.slice(-7),
             },
           },
         },
@@ -103,7 +102,7 @@ const getAllTrackingByWeek = async (req, res) => {
           },
           {
             date: {
-              [Op.in]: weekD,
+              [Op.in]: weekD.slice(-7),
             },
           },
         ],
@@ -283,6 +282,7 @@ const newTransaction = async (req, res) => {
   const cate = await db.Category.findOne({
     where: { [Op.and]: [{ id: cateId }, { user_id: userId }] },
   });
+  'bill_img', bill_img)
   await db.Tracking.create({
     title,
     cost: cate.type === "expense" ? cost * -1 : cost,
