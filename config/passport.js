@@ -9,7 +9,6 @@ const options = {
 
 const jwtStrategy = new JWTStrategy(options, async (payload, done) => {
   const idFromToken = payload.id;
-  console.log(idFromToken);
   const user = await db.User.findOne({ where: { id: idFromToken }, attributes: ['id', 'username', 'email'] })
 
   if (user) {
