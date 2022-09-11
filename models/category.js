@@ -8,6 +8,10 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.ENUM('expense', 'income'),
         allowNull: false,
         defaultValue: 'expense'
+      },
+      isActive: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: true
       }
     })
   
