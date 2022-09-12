@@ -282,7 +282,6 @@ const newTransaction = async (req, res) => {
   const cate = await db.Category.findOne({
     where: { [Op.and]: [{ id: cateId }, { user_id: userId }] },
   });
-  'bill_img', bill_img)
   await db.Tracking.create({
     title,
     cost: cate.type === "expense" ? cost * -1 : cost,
