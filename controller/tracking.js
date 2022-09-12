@@ -179,7 +179,6 @@ const getAllTrackingByMonth = async (req, res) => {
       },
     });
     res.status(200).send({ targetTracking, total, expense, income });
-    res.status(200).send({ expType });
   } catch (err) {
     console.log("err :>> ", err);
   }
